@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting to Telegram…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Redirect after 5 seconds -->
+  <meta http-equiv="refresh" content="5; url=https://t.me/GemlyRank" />
+
+  <meta name="description" content="This page is under construction. You will be redirected to our Telegram bot shortly." />
+  <meta name="color-scheme" content="light dark" />
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --fg: #f3f3f3;
+      --muted: #b8b8b8;
+      --accent: #6ea8fe;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: #ffffff; --fg: #111111; --muted: #555555; --accent: #2b6cb0; }
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .wrap {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .card {
+      max-width: 720px;
+      width: 100%;
+      display: grid;
+      gap: 1.25rem;
+      place-items: center;
+      animation: fadeIn 400ms ease-out both;
+    }
+
+    img.logo {
+      width: min(60vw, 320px);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,.25));
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.25rem, 1rem + 1.5vw, 1.75rem);
+      font-weight: 650;
+    }
+
+    p {
+      margin: 0;
+      font-size: clamp(1rem, .95rem + .5vw, 1.125rem);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .timer {
+      font-variant-numeric: tabular-nums;
+      margin-top: .25rem;
+      color: var(--muted);
+      opacity: .9;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main">
+    <div class="card" aria-live="polite">
+      <img class="logo" src="logo.png" alt="Gemly Rank logo" loading="lazy" />
+      <h1>Our website is under construction</h1>
+      <p>
+        You’ll be redirected directly to our Telegram bot in a moment.
+        If it doesn’t happen automatically,
+        <a href="https://t.me/GemlyRank" rel="nofollow noopener">tap here to open Telegram</a>.
+      </p>
+      <p class="timer">Redirecting in <span id="seconds">5</span>s…</p>
+    </div>
+  </main>
+
+  <!-- JS fallback to ensure redirect also works if meta refresh is blocked -->
+  <script>
+    (function () {
+      var target = "https://t.me/GemlyRank";
+      var seconds = 5;
+      var el = document.getElementById("seconds");
+
+      var iv = setInterval(function () {
+        seconds--;
+        if (el) el.textContent = String(seconds);
+        if (seconds <= 0) {
+          clearInterval(iv);
+          window.location.href = target;
+        }
+      }, 1000);
+
+      // Extra safety: also trigger a redirect after 5s in case the interval is throttled
+      setTimeout(function () { window.location.href = target; }, 5000);
+    })();
+  </script>
+
+  <noscript>
+    <meta http-equiv="refresh" content="5; url=https://t.me/GemlyRank">
+  </noscript>
+</body>
+</html>
